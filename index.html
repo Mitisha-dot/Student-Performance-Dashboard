@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Performance Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
+
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-slate-950 via-indigo-950 to-purple-950 text-white p-4 shadow-lg">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold">
+                🎓 Student Performance Dashboard
+            </h1>
+
+            <span class="text-sm hidden sm:block">
+                Academic Performance
+            </span>
+        </div>
+    </nav>
+
+
+    <!-- Main Section -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- Heading -->
+        <div class="text-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+                Track Your Performance
+            </h2>
+
+            <p class="text-gray-600 mt-2">
+                Enter your marks and calculate your academic performance
+            </p>
+        </div>
+
+
+        <!-- Input Card -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+
+            <h3 class="text-2xl font-bold text-indigo-800 mb-6">
+                Student Details
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                <!-- Student Name -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter your name"
+                        class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    >
+                </div>
+
+
+                <!-- Roll Number -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Roll Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="rollNumber"
+                        placeholder="Enter roll number"
+                        class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Subjects -->
+            <h3 class="text-2xl font-bold text-indigo-800 mt-8 mb-5">
+                Subject Marks
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <!-- Mathematics -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Mathematics
+                    </label>
+
+                    <input
+                        type="number"
+                        id="maths"
+                        min="0"
+                        max="100"
+                        placeholder="Marks out of 100"
+                        class="subject-mark w-full border border-gray-300 rounded-lg p-3"
+                    >
+                </div>
+
+
+                <!-- Data Structures -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Data Structures
+                    </label>
+
+                    <input
+                        type="number"
+                        id="ds"
+                        min="0"
+                        max="100"
+                        placeholder="Marks out of 100"
+                        class="subject-mark w-full border border-gray-300 rounded-lg p-3"
+                    >
+                </div>
+
+
+                <!-- Computer Architecture -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Computer Architecture
+                    </label>
+
+                    <input
+                        type="number"
+                        id="ca"
+                        min="0"
+                        max="100"
+                        placeholder="Marks out of 100"
+                        class="subject-mark w-full border border-gray-300 rounded-lg p-3"
+                    >
+                </div>
+
+
+                <!-- Web Development -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Web Development
+                    </label>
+
+                    <input
+                        type="number"
+                        id="web"
+                        min="0"
+                        max="100"
+                        placeholder="Marks out of 100"
+                        class="subject-mark w-full border border-gray-300 rounded-lg p-3"
+                    >
+                </div>
+
+
+                <!-- DBMS -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        DBMS
+                    </label>
+
+                    <input
+                        type="number"
+                        id="dbms"
+                        min="0"
+                        max="100"
+                        placeholder="Marks out of 100"
+                        class="subject-mark w-full border border-gray-300 rounded-lg p-3"
+                    >
+                </div>
+
+
+                <!-- Programming -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Programming
+                    </label>
+
+                    <input
+                        type="number"
+                        id="programming"
+                        min="0"
+                        max="100"
+                        placeholder="Marks out of 100"
+                        class="subject-mark w-full border border-gray-300 rounded-lg p-3"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Button -->
+            <div class="text-center mt-8">
+
+                <button
+                    onclick="calculateResult()"
+                    class="bg-indigo-700 hover:bg-indigo-800 text-white font-bold px-8 py-3 rounded-lg shadow-lg transition"
+                >
+                    Calculate Performance
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Result -->
+        <div
+            id="result"
+            class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-8 mt-8"
+        >
+
+            <h3 class="text-2xl font-bold text-center text-indigo-800 mb-6">
+                📊 Performance Result
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+                <div class="bg-blue-100 p-5 rounded-xl text-center">
+                    <p class="text-gray-600">Total Marks</p>
+                    <p id="totalMarks" class="text-3xl font-bold text-blue-700">
+                        0
+                    </p>
+                </div>
+
+
+                <div class="bg-green-100 p-5 rounded-xl text-center">
+                    <p class="text-gray-600">Percentage</p>
+                    <p id="percentage" class="text-3xl font-bold text-green-700">
+                        0%
+                    </p>
+                </div>
+
+
+                <div class="bg-purple-100 p-5 rounded-xl text-center">
+                    <p class="text-gray-600">Grade</p>
+                    <p id="grade" class="text-3xl font-bold text-purple-700">
+                        -
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Status -->
+            <div class="text-center mt-6">
+                <p class="text-gray-600">Performance Status</p>
+
+                <p
+                    id="status"
+                    class="text-2xl font-bold mt-2"
+                >
+                    -
+                </p>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white text-center p-5 mt-8">
+        <p>
+            © 2026 Student Performance Dashboard
+        </p>
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function calculateResult() {
+
+            let maths = Number(document.getElementById("maths").value);
+            let ds = Number(document.getElementById("ds").value);
+            let ca = Number(document.getElementById("ca").value);
+            let web = Number(document.getElementById("web").value);
+            let dbms = Number(document.getElementById("dbms").value);
+            let programming = Number(document.getElementById("programming").value);
+
+
+            let total =
+                maths +
+                ds +
+                ca +
+                web +
+                dbms +
+                programming;
+
+
+            let percentage = total / 6;
+
+
+            let grade;
+
+            if (percentage >= 90) {
+                grade = "A+";
+            }
+            else if (percentage >= 80) {
+                grade = "A";
+            }
+            else if (percentage >= 70) {
+                grade = "B";
+            }
+            else if (percentage >= 60) {
+                grade = "C";
+            }
+            else if (percentage >= 50) {
+                grade = "D";
+            }
+            else {
+                grade = "F";
+            }
+
+
+            let status;
+
+            if (percentage >= 40) {
+                status = "PASS ✅";
+            }
+            else {
+                status = "FAIL ❌";
+            }
+
+
+            document.getElementById("totalMarks").innerText =
+                total + " / 600";
+
+            document.getElementById("percentage").innerText =
+                percentage.toFixed(2) + "%";
+
+            document.getElementById("grade").innerText =
+                grade;
+
+            document.getElementById("status").innerText =
+                status;
+
+
+            document.getElementById("result").classList.remove("hidden");
+        }
+
+    </script>
+
+</body>
+</html>
